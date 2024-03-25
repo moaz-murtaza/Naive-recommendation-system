@@ -6,7 +6,7 @@ This repository contains the Naive recommendation system which is a search engin
 
 The **sys** and **string** are the modules of python standard libaray and donot require additional installations.
 
-**MAPPER AND REDUCER 1 EPLAINATION**
+ # MAPPER AND REDUCER 1 EPLAINATION
 
 The first mapper reducer are for the preprocessing of the text to be used for the text analysis task.
 
