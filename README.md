@@ -13,7 +13,7 @@ The first mapper reducer are for the preprocessing of the text to be used for th
  **PURPOSE(MAPPER)**
 The first mapper function is a part of the data preprocessing phase in the naive recommendation system it processes the imput data, extracts relevant information , and outputs the key-value pairs to be futhur processed by the reducer.
 
-** DESCRIPTION **
+**DESCRIPTION**
 This mapper function reads the input data from the standard input line by line as each line represents a record or entry in the dataset seperated by commas. For a line containing less than four columns it is considered invalid and is skipped. The valid lines of the dataset the function extracts the text fron the third inde converts it into lowercase , removes the punctuation using the 'string.translate' method and splits them into induvidual words which are then emitted as key-value pairs where the word serves as the key and the value is set to '1' to denote the occurance
 
 
