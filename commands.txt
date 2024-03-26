@@ -1,0 +1,8 @@
+hadoop fs -put /home/moaz/asst2/sample.csv /inputs/sample.csv
+hadoop jar /home/moaz/hadoop-3.3.6/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar -input /inputs/sample.csv -output /inputs/output_sample -mapper mapper1.py -reducer reducer1.py -file /home/moaz/asst2/mapper1.py -file /home/moaz/asst2/reducer1.py
+hadoop fs -get /inputs/output_sample/part-00000 /home/moaz/output1.txt
+hadoop jar /home/moaz/hadoop-3.3.6/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar -input /inputs/sample.csv -output /inputs/output_sample2 -mapper mapper2.py -reducer reducer2.py -file /home/moaz/asst2/mapper2.py -file /home/moaz/asst2/reducer2.py
+hadoop fs -get /inputs/output_sample2/part-00000 /home/moaz/output2.txt
+hadoop fs -put /home/moaz/output2.txt /inputs/output2.txt
+hadoop jar /home/moaz/hadoop-3.3.6/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar -input /inputs/output2.txt -output /inputs/output_sample3 -mapper mapper3.py -reducer reducer3.py -file /home/moaz/asst2/mapper3.py -file /home/moaz/asst2/reducer3.py
+hadoop fs -get /inputs/output_sample3/part-00000 /home/moaz/output3.txt
