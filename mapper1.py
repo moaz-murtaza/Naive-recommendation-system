@@ -3,6 +3,7 @@ import sys
 import string
 
 def mapper():
+    next(sys.stdin)
     for line in sys.stdin:
         columns = line.strip().split(',')
         # If there are less than 4 columns, skip this line
