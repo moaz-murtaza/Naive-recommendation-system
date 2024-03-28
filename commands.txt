@@ -6,3 +6,8 @@ hadoop fs -get /inputs/output_sample2/part-00000 /home/moaz/output2.txt
 hadoop fs -put /home/moaz/output2.txt /inputs/output2.txt
 hadoop jar /home/moaz/hadoop-3.3.6/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar -input /inputs/output2.txt -output /inputs/output_sample3 -mapper mapper3.py -reducer reducer3.py -file /home/moaz/asst2/mapper3.py -file /home/moaz/asst2/reducer3.py
 hadoop fs -get /inputs/output_sample3/part-00000 /home/moaz/output3.txt
+hadoop jar /home/moaz/hadoop-3.3.6/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar -input /inputs/output2.txt -output /inputs/output_sample4 -mapper mapper4.py -reducer reducer4.py -file /home/moaz/asst2/mapper4.py -file /home/moaz/asst2/reducer4.py
+hadoop fs -get /inputs/output_sample4/part-00000 /home/moaz/output4.txt
+hadoop fs -put /home/moaz/asst2/query.txt /inputs/query.txt
+hadoop jar /home/moaz/hadoop-3.3.6/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar -input /inputs/query.txt -output /inputs/output_sample5 -mapper mapper5.py -reducer reducer5.py -file /home/moaz/asst2/mapper5.py -file /home/moaz/asst2/reducer5.py
+hadoop fs -get /inputs/output_sample4/part-00000 /home/moaz/output5.txt
