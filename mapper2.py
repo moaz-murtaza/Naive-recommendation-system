@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import string
+import csv
 
 def load_codes(code_file):
     codes = {}
@@ -11,24 +12,31 @@ def load_codes(code_file):
     return codes
 
 def mapper():
-    # Load the codes
-    codes = load_codes('/inputs/output_sample/part-00000')
+    codes = load_codes('/home/moaz/output1.txt')
+    articles = dict()
 
-    for line in sys.stdin:
-        columns = line.strip().split(',')
-        # If there are less than 4 columns, skip this line
+    lines = csv.reader(sys.stdin)
+
+    for columns in lines:
         if len(columns) < 4:
             continue
 
-        words = columns[3].lower().translate(str.maketrans('', '', string.punctuation)).split()
-        article_dict = dict.fromkeys(codes.values(), 0)
+        words = columns[3].lower().translate(str.maketrans('', '', string.punctuation)).split() 
+        article_id = columns[0]
 
+        if not articles.get(article_id):
+            articles[article_id] = dict.fromkeys(codes.values(), 0)
+
+        article_dict = articles[article_id]
+        
         for word in words:
             code = codes.get(word)
             if code:
                 article_dict[code] += 1
 
-        print(f"{columns[0]}{article_dict}")
+    # Print results for all articles
+    for article_id, word_frequencies in articles.items():
+        print(f"{article_id}{word_frequencies}") 
 
 if __name__ == "__main__":
     mapper()
