@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 import sys
 import string
+import csv
 
 def mapper():
-    next(sys.stdin)
-    for line in sys.stdin:
-        columns = line.strip().split(',')
-        # If there are less than 4 columns, skip this line
+    lines = csv.reader(sys.stdin)
+
+    for columns in lines:
         if len(columns) < 4:
             continue
-        words = columns[3].lower().translate(str.maketrans('', '', string.punctuation)).split()
+
+        words = columns[3].lower().translate(str.maketrans('', '', string.punctuation)).split() 
         for word in words:
             print(f"{word}\t1")
 
