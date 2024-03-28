@@ -16,6 +16,8 @@ def mapper():
     articles = dict()
 
     lines = csv.reader(sys.stdin)
+    
+    next(lines)
 
     for columns in lines:
         if len(columns) < 4:
