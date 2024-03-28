@@ -8,7 +8,7 @@ def load_weights(code_file):
         for line in file:
             article_num, remaining_text = line.split("\t(", 1)
             article_num = int(article_num) 
-            remaining_text = remaining_text.rstrip(")")
+            remaining_text = remaining_text[:-2]
             code_value_pairs = remaining_text.split("), (")
             inner_dict = {}  
             for pair in code_value_pairs:
@@ -24,13 +24,13 @@ def reducer():
     for line in sys.stdin:
         line = line.strip()
         code, weight = line.split('\t')
-        query_dict[code] = weight
+        query_dict[int(code)] = float(weight)
     
-    for id, value in weight.items():
+    for id, value in weights.items():
         matching = 0.0
-        for code, weights in query_dict.items():
-            if value.get(code):
-                matching += weights * value.get(code)
+        for code, weight in query_dict.items():
+            if code in weights[id]:
+                matching += weight * weights[id][code]
         print(f'Article : {id}\t Relevance : {matching}')
 
 if __name__ == "__main__":
