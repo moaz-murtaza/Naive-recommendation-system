@@ -376,9 +376,9 @@ Based on these relevance scores, the recommendation system could:
 
 This project was possible only because of the extraordinary people who contributed to it : 
 
-> Moaz Murtaza(i221902@nu.edu.pk)
-
->Bilal Bashir (i221901@nu.edu.pk)
+ Moaz-Murtaza (i221902@nu.edu.pk)
+ 
+ bilalbashir08 (i221901@nu.edu.pk)
 
 
 
