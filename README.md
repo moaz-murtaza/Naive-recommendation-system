@@ -354,14 +354,31 @@ The output of this reducer function provides a comprehensive assessment of the r
 This reducer function plays a crucial role in determining the relevance of articles to a given query in a search or recommendation system.
 Users can execute this reducer as part of a query processing pipeline, where the output of this reducer provides relevance scores for each article based on the input query.
 
+**FINAL OUTPUT AFTER RUNNING THE QUERIES**
 
-# CONTRIBUTORS 
+![Mapreduce 5](https://github.com/moaz-murtaza/Naive-recommendation-system/assets/157779652/ece4ee0c-256b-4802-b224-865d42550298)
 
-This project was possible only because of the extraordinary people who contributed to the assignment : 
+**Output-Explaination**
+
+Each line in the output corresponds to an article and its associated relevance score.The relevance score indicates how relevant each article is for a recommendation.The article numbers (e.g., Article 10, Article 11) likely correspond to unique identifiers for different articles.The relevance scores are floating-point numbers, suggesting some form of calculation or ranking.Higher relevance scores indicate greater suitability for recommendation.
+
+Based on these relevance scores, the recommendation system could:
+
+-Recommend Article 10 as a top choice.
+
+-Consider Article 11 as a secondary recommendation.
+
+-Likely exclude Article 12, Article 13, and Article 14 due to their low relevance.
+
+
+
+# CONTRIBUTORs
+
+This project was possible only because of the extraordinary people who contributed to it : 
 
 > Moaz Murtaza(i221902@nu.edu.pk)
 
-> Bilal Bashir (i221901@nu.edu.pk)
+>Bilal Bashir (i221901@nu.edu.pk)
 
 
 
