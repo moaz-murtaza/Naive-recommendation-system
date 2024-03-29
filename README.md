@@ -372,13 +372,13 @@ Based on these relevance scores, the recommendation system could:
 
 
 
-# CONTRIBUTORs
+# CONTRIBUTORS
 
 This project was possible only because of the extraordinary people who contributed to it : 
 
- Moaz-Murtaza (i221902@nu.edu.pk)
+>[ moaz-murtaza](https://github.com/moaz-murtaza) (i221902@nu.edu.pk)
  
- bilalbashir08 (i221901@nu.edu.pk)
+>[ bilalbashir08](https://github.com/bilalbashir08) (i221901@nu.edu.pk)
 
 
 
