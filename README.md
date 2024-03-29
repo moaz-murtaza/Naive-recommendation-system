@@ -347,10 +347,24 @@ The resulting relevance score is printed for each article along with its ID, for
 
 **OUTPUT**
 
+The output of this reducer function provides a comprehensive assessment of the relevance of each article to a given query in a search or recommendation system. Each line of output includes the unique identifier (ID) of an article along with its corresponding relevance score, which is calculated based on the weighted sum of matching terms between the query and the article. The relevance score quantifies the extent to which an article addresses the query's context and relevance. A higher relevance score indicates a stronger alignment between the article's content and the query, making it more likely to be relevant to the user's information needs. This output format enables users to evaluate and prioritize articles based on their relevance to the query, facilitating efficient information retrieval and decision-making processes. Additionally, users can seamlessly integrate this reducer function into their query processing pipelines to obtain relevance scores for articles dynamically, enhancing the overall effectiveness and usability of their search or recommendation systems.
+
 **USAGE**
 
 This reducer function plays a crucial role in determining the relevance of articles to a given query in a search or recommendation system.
 Users can execute this reducer as part of a query processing pipeline, where the output of this reducer provides relevance scores for each article based on the input query.
+
+
+# CONTRIBUTORS 
+
+This project was possible only because of the extraordinary people who contributed to the assignment : 
+
+> Moaz Murtaza(i221902@nu.edu.pk)
+
+> Bilal Bashir (i221901@nu.edu.pk)
+
+
+
 
 
 
