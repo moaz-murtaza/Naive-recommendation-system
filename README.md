@@ -6,77 +6,10 @@ This repository contains the Naive recommendation system which is a search engin
 
 The **sys** and **string** are the modules of python standard libaray and donot require additional installations.
 
- # MAPPER AND REDUCER 1 EPLAINATION (Generating keys for each word)
 
-The first mapper reducer are for the preprocessing of the text to be used for the text analysis task.
+# MAPPER AND REDUCER 1 EXPLAINATION (Generating tuples (Word(number), count)) : 
 
- **PURPOSE(MAPPER)**
-	
-The first mapper function is a part of the data preprocessing phase in the naive recommendation system it processes the imput data, extracts relevant information , and outputs the key-value pairs to be futhur processed by the reducer.
-
-**DESCRIPTION**
-
-This mapper function reads the input data from the standard input line by line as each line represents a record or entry in the dataset seperated by commas. For a line containing less than four columns it is considered invalid and is skipped. The valid lines of the dataset the function extracts the text from the third index converts it into lowercase , removes the punctuation using the 'string.translate' method and splits them into induvidual words which are then emitted as key-value pairs where the word serves as the key and the value is set to '1' to denote the occurance
-
-**OUTPUT(Mapper)**
-
-The output for this mapper would be a series of lines , each containing a word followed by the tab character and the number indicating the word count of the occurrances.
-
-For Example : 
-
-Hello	1 
-
-Book	1
-
-Hello	1
-
-Stamp	1
-
-Each line represents the word and the number of times it is repeated in the input data .
-
-**PURPOSE(REDUCER)**
-
-The reducer for the above mapper aggregates the key-value pairs emitted by the mapper function and performs intermediate data processing and generates the final output. 
-
-**DESCRIPTION**
-
-Reducer function reads the key-value pairs and aggregated the occurrences of the same word and assigns a unique index to each word encountered creating a voacbulary. Which then outputs the index word pairs for which the index serves as the identifier. 
-
-**KEY-COMPONENTS**
-
-_1.Current-word and word-count:_
-   Current word stores the word being processed and the word count stores the cumulative count of the occurances for the current word.
-			
-_2.Vocabulary Dictionary:_
-   stores the unique words encountered along with their coressponding indices and the index is incrementally assigned as the word are encountered.
-		
-_3.Input Processing:_
-   The word and the count are extracted from the tab seperated key-value pairs. The count is also converted to an integer for the numerical operations.
-
-_4.Aggregation and Vocabulary-creation:_
-   If the current word matches the previous word the count is added to the cumulative count for that word. as a new word is encountered it becomes the comulative count and is added to the vocabulary dictionary with a unique index.
-
-**USAGE**
-  This reducer function is designed to be used in conjunction with a mapper function in the mapreduce which is suitable for the tasks related to vocabulary creation and feature extraction as an indexer for the search engine optimization.
-
-**OUTPUT(reducer)**
-
-1.The reducer initializes the variables while keeping in track of the current word being processed and its respective count by iterating over each line from the standard input.
-
-2.For each line it splits the word and the count .
-
-3.If the current word is same as the previous one the count is incremented 
-
-4. If a certain new word is added it updates the vocabulary with the word and its count
-
-5. The end output is the printing of the vocabulary with each word and its corresponding index .
-
-The output for this reducer essentially provides each unique word and its coressponding index in the vocabulary.
-
-
-# MAPPER AND REDUCER 2 EXPLAINATION (Generating tuples (Word(number), count)) : 
-
-**PURPOSE(mapper2)**
+**PURPOSE(mapper1)**
 
 This mapper function is tailored to transform raw text data into structured feature vectors , facilitating the downstream tasks like document analysis or classification .It processes the input data by mapping the words to their respective corressponding numerical codes based on a predefined codebook.
 
@@ -100,12 +33,12 @@ The input data is usually provided in a structured format such as a csv or a jso
 
 The users need to ensure that the input data adheres to the expected format and that the codebook file contains appropriate mapping for efficient word encoding.
 
-**OUTPUT(mapper2)**
+**OUTPUT(mapper1)**
 
 The output for the mapper consists of the key-va;ue pairs where each key represents the article-id and value reprents the feature vector associated with the article . Feature vector represents the frequency of each word in the article.
 
 
-**PURPOSE(reducer2)**
+**PURPOSE(reducer1)**
 
 This reducer aims to consolidate the counts associated with the each article id and prints the aggregated counts for each article.
 
@@ -133,9 +66,9 @@ After the processing of the input data , the reducer prints the aggregated count
 This reducer expects the input data in the format generated by mapper functions , where each line represents an article id followed by its associated counts. The users can run the reducer after the mapper phase to aggregate the counts and generate output for furthur analysis.
 
 
-# MAPPER AND REDUCER 3 EXPLAINATION (Calculating Idf/Df): 
+# MAPPER AND REDUCER 2 EXPLAINATION (Calculating Idf/Df): 
 
-**PURPOSE(mapper3)**
+**PURPOSE(mapper2)**
 
 This mapper function serves to process the input data , specifically structured to handle information related to the articles and aggregates the counts associated with each article id . This Aggregation is essential for understanding the frequency of specific terms within the articles. Additionally it also can be utilized in the context of calculating the idf(inverse document frequency) or Df(Document Frequency).
 
@@ -171,7 +104,7 @@ This calculation of IDF/DF values is essential in document classification and in
 
 The mapper function expects the input data in a specifix format tailored to the requirements where each line represents either an article Id or a code-count pair. The users can execute the mapper function as the part of the data processing pipeline to aggregate counts associated with each article Id. The aggregated data can then be utilized for various analytical tasks including the calculation of the IDF/DF values for the terms in a document collection.
 
-**PURPOSE(reducer3)**
+**PURPOSE(reducer2)**
 
 This reducer function aims to calculate the IDF/DF for each code in the collection of the articles. It helps to identify the terms that are rare or unique across the documents.
 
@@ -201,7 +134,7 @@ The normalized counts are calculated by the reducer using the formula :
 
 These normalized counts are then stored in a new dictionary **'normalized_counts'**
 
-**OUTPUT(reducer3)**
+**OUTPUT(reducer2)**
 
 Reducer prints the normalized counts for each article to the standard output stream . Each line of the output includes the article_id followed by the normalized counts of the terms associated with the article , formatted as pairs of term codes and their corresponding normalized_counts. 
 
@@ -209,9 +142,9 @@ Reducer prints the normalized counts for each article to the standard output str
 
 The reducer function is a crucial component in the data processing pipeline designed to calculate IDF/DF for terms in a corpus of articles . Users can execute the reducer function after the mapper phase to aggregate the term counts across articles and calculate the normalized counts required for IDF/DF computation.
 
-# MAPPER AND REDUCER 4 (Storing Df_counts)
+# MAPPER AND REDUCER 3 (Storing Df_counts)
 
-**PURPOSE(mapper4)**
+**PURPOSE(mapper3)**
 
 This mapper function is designed to process input data and emit the key-value pairs as intermediate outputs , specifically geared towards storing document frequency counts for each term(code ) within a corpus of articles . the DF counts are essential for calculating the inverse Document Frequency (IDF) used in various text analysis and information retrieval tasks.
 
@@ -245,7 +178,7 @@ For example, an output line may look like this: article_id{code1:count1, code2:c
 
 Here, article_id denotes the unique identifier of the article, while code1, code2, etc., represent term codes found within the article along with their respective frequencies (count1, count2, etc.). This output format facilitates downstream processes, such as reducers, to aggregate and analyze term counts across articles for various text mining and information retrieval tasks.
 
-**PURPOSE(reducer 4)**
+**PURPOSE(reducer 3)**
 
 This reducer function is responsible for aggregating term counts across articles emitted by the mapper and calculating the document frequency (DF) for each term (code) within the corpus of articles.
 
@@ -278,7 +211,7 @@ The reducer prints the final document frequency counts for each term to the stan
 
 This reducer function is a vital component in the data processing pipeline for calculating document frequency counts. Users can execute this reducer after the mapper phase to aggregate term counts across articles.
 
-# MAPPER AND REDUCER 5 (Running Queries) 
+# MAPPER AND REDUCER 4 (Running Queries) 
 
 **PURPOSE (mapper)**
 
@@ -379,6 +312,8 @@ This project was possible only because of the extraordinary people who contribut
 >[ moaz-murtaza](https://github.com/moaz-murtaza) (i221902@nu.edu.pk)
  
 >[ bilalbashir08](https://github.com/bilalbashir08) (i221901@nu.edu.pk)
+
+>[Alizeh21](https://github.com/Alizeh21) (i211775@nu.edu.pk)
 
 
 
