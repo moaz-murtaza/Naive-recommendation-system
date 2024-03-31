@@ -6,6 +6,7 @@ def reducer():
     # Variables to store articles and document frequencies
     article_data = defaultdict(dict)
     df_counts = defaultdict(int)
+    dictionary = defaultdict(int)
 
 
     # Read input from mapper
@@ -31,7 +32,11 @@ def reducer():
             
     for article_id, counts in article_data.items():
         for code, count in counts.items():
-            print(f"{code}\t{df_counts[code]}")
+            dictionary[code]= df_counts[code]
+           
+    for code, value in dictionary.items():
+        if code != 1:
+    	    print(f"{code}\t{value}")
             
     
 if __name__ == "__main__":
