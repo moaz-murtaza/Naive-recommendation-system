@@ -31,7 +31,8 @@ def reducer():
         for code, weight in query_dict.items():
             if code in weights[id]:
                 matching += weight * weights[id][code]
-        print(f'Article : {id}\t Relevance : {matching}')
+        if matching > 0.0:
+            print(f'Article : {id}\t Relevance : {matching}')
 
 if __name__ == "__main__":
     reducer()
